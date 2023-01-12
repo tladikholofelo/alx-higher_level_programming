@@ -1,6 +1,12 @@
+The ``7-base_geometry`` module
+==============================
+
+Using ``BaseGeometry``
+----------------------
+
 Importing the function from the module:
         >>> BG = __import__("7-base_geometry").BaseGeometry
-
+    
 Checking for module docstring:
          >>> m = __import__("7-base_geometry").__doc__
          >>> len(m) > 1
@@ -18,6 +24,20 @@ Checking for method docstring:
 	  >>> mod2 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
           >>> len(mod2) > 1
           True
+
+Trying to pass a boolean value
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", True)
+    Traceback (most recent call last):
+    	      ...
+    TypeError: name must be an integer
+    
+Trying to pass a negative value
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", -5)
+    Traceback (most recent call last):
+    	      ...
+    ValueError: name must be greater than 0
 
 Checking for area failure:
 	  >>> b = BG()
